@@ -50,7 +50,7 @@ Num_measurements = sarParams.Num_horizontalScan * sarParams.Num_verticalScan;
 
 % adc_file_name = [adcBinData_folderName '\ADC Temp.bin'];
 % adc_file_name = [adcBinData_folderName '\sar_data_con_3_Raw_0.bin'];
-adc_file_name = [adcBinData_folderName '\box.bin'];
+adc_file_name = [adcBinData_folderName '\dry.bin'];
 % [ErrStatus,rawData] = Parse_Datafile_bin_SAR(adc_file_name,2*Num_RX_channels,Samples_per_Chirp,Chirps_per_Frame*Num_TX,Num_Frames,Num_measurements);
 % if ErrStatus~=0
 %     disp('Error in parsing data file for Rxchain');

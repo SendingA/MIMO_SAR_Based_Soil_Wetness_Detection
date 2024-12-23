@@ -333,32 +333,90 @@ if (xySizeT ~= -1)
 end
 
 %% Plot SAR Image
-%-------------------------------------------------------------------------%
+% %-------------------------------------------------------------------------%
+% if is2DImaging
+%     figure('OuterPosition',[695 166 670 712]);
+%     mesh(xRangeT_mm,yRangeT_mm,abs(squeeze(sarImage)),'FaceColor','interp','LineStyle','none')
+%     view(2)
+%     colormap('gray');
+% 
+%     xlabel('Horizontal (mm)')
+%     ylabel('Vertical (mm)')
+%     titleFigure = "SAR 2D Image - " + zTarget + "mm Focused" ;
+%     title(titleFigure)
+% 
+%     % Or Log Image
+%     sarImageAbsLog = mag2db(abs(squeeze(sarImage))); % 20*log10
+%     sarImageAbsLog = sarImageAbsLog - max(max(sarImageAbsLog));
+% 
+%     figure('OuterPosition',[695 166 670 712]);
+%     mesh(xRangeT_mm,yRangeT_mm,sarImageAbsLog,'FaceColor','interp','LineStyle','none')
+%     view(2)
+%     colormap('gray');
+% 
+%     xlabel('Horizontal (mm)')
+%     ylabel('Vertical (mm)')
+%     titleFigure = "SAR 2D Log Image - " + zTarget + "mm Focused" ;
+%     title(titleFigure)
+% end
 if is2DImaging
-    figure('OuterPosition',[695 166 670 712]);
-    mesh(xRangeT_mm,yRangeT_mm,abs(squeeze(sarImage)),'FaceColor','interp','LineStyle','none')
+    % 创建第一个图形并显示
+    fig1 = figure('OuterPosition',[695 166 670 712]);
+    mesh(xRangeT_mm, yRangeT_mm, abs(squeeze(sarImage)), 'FaceColor', 'interp', 'LineStyle', 'none')
     view(2)
     colormap('gray');
+
+    % 设置横轴和纵轴范围
+    xlim([-200, 200]);
+    ylim([-200, 200]);
+
+    % 去掉坐标轴和标题
+    axis off;
+    title('');
+
+    % 设置背景透明
+    set(gca, 'Color', 'none');
+    set(gcf, 'Color', 'none');
+
+    % 自动调整坐标轴范围
+    axis tight;
+
+    fileName1 = sprintf('2D_SAR_Image_%s.png', num2str(zTarget));
+    % 导出第一个图形为图片（使用exportgraphics）
+    exportgraphics(fig1, fileName1, 'BackgroundColor', 'none');  % 透明背景
     
-    xlabel('Horizontal (mm)')
-    ylabel('Vertical (mm)')
-    titleFigure = "SAR 2D Image - " + zTarget + "mm Focused" ;
-    title(titleFigure)
-    
-    % Or Log Image
-    sarImageAbsLog = mag2db(abs(squeeze(sarImage))); % 20*log10
-    sarImageAbsLog = sarImageAbsLog - max(max(sarImageAbsLog));
-    
-    figure('OuterPosition',[695 166 670 712]);
-    mesh(xRangeT_mm,yRangeT_mm,sarImageAbsLog,'FaceColor','interp','LineStyle','none')
-    view(2)
-    colormap('gray');
-    
-    xlabel('Horizontal (mm)')
-    ylabel('Vertical (mm)')
-    titleFigure = "SAR 2D Log Image - " + zTarget + "mm Focused" ;
-    title(titleFigure)
+    % % 创建第二个图形并显示
+    % sarImageAbsLog = mag2db(abs(squeeze(sarImage))); % 20*log10
+    % sarImageAbsLog = sarImageAbsLog - max(max(sarImageAbsLog));
+    % 
+    % fig2 = figure('OuterPosition',[695 166 670 712]);
+    % mesh(xRangeT_mm, yRangeT_mm, sarImageAbsLog, 'FaceColor', 'interp', 'LineStyle', 'none')
+    % view(2)
+    % colormap('gray');
+    % 
+    % % 设置横轴和纵轴范围
+    % xlim([-200, 200]);
+    % ylim([-200, 200]);
+    % 
+    % % 去掉坐标轴和标题
+    % axis off;
+    % title('');
+    % 
+    % % 设置背景透明
+    % set(gca, 'Color', 'none');
+    % set(gcf, 'Color', 'none');
+    % 
+    % % 自动调整坐标轴范围
+    % axis tight;
+    % 
+    % % 导出第二个图形为图片（使用exportgraphics）
+    % exportgraphics(fig2, 'SAR_2D_Log_Image_NoAxes_Limited.png', 'BackgroundColor', 'none');  % 透明背景
 end
+
+
+
+
+
 
 
 %% Write the output variable in a binary file (for ImageJ) in floating point format
