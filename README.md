@@ -55,7 +55,7 @@ delayOffset_fileName = '.\Algorithms\calibration\calData\delayOffset_3Tx_4Rx.mat
 %Here we can also add path for background calibration 
 ```
 
-## Mean Target z-Distance and Other Modified Parameters
+#### Mean Target z-Distance and Other Modified Parameters
 
 ```matlab
 zTarget_mm = 250; % update the distance as needed.
