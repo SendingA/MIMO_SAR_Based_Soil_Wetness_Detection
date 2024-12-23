@@ -139,3 +139,45 @@ After modify the directories, files and parameters,  running the workflow is wha
 
 
 
+#### Training and testing
+
+You are supposed to start training only if you arrange your data well. A brief structure is as follows.
+
+```
+data/
+├── train/
+│   ├── class1/
+│   │   ├── image1.jpg
+│   │   ├── image2.jpg
+│   │   └── ...
+│   ├── class2/
+│   └── ...
+└── val/
+    ├── class1/
+    │   ├── image1.jpg
+    │   ├── image2.jpg
+    │   └── ...
+    ├── class2/
+    └── ...
+```
+
+Here, `class1`, `class2` and etc. are regarded as labels of each class.
+
+Then, run the following line in your **command** to install necessary dependencies if you have not.
+
+```
+pip install torch torchvision tqdm
+```
+
+And run the script `train.py` to start. GPU is supported and highly recommended for efficient training.
+
+```
+python train.py
+```
+
+Finally, after getting your model `[name].pth`, just modify the dict `CIFAR10_CLASSES` to match the class No. and the label, and set `num_classes` correctly. Run the last line after you name the target file `test_img/tst_image.png` and you will get your result.
+
+```
+python predict.py
+```
+
