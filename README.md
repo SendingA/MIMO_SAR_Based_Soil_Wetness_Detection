@@ -1,6 +1,14 @@
 # MIMO-SAR Based Soil Wetness Detection
 
-### Hardware:
+### **Imaging Result**
+
+![image-20241224191357385](README/image-20241224191357385.png)
+
+![image-20241224191342705](README/image-20241224191342705.png)
+
+![image-20241224191420888](README/image-20241224191420888.png)
+
+### **Hardware:**
 
 - Driver: **DM542S**
 - Motor : **42 BYG H4812 Motor**
@@ -9,14 +17,14 @@
 - **400 $\times$ 400 2D Scanner**
 - **4mm pitch of thread and 9mm diameter**
 
-### Software:
+### **Software:**
 
 - mmWave Studio
 - Ardiuno IDE
 - Matlab
 - Python
 
-### MIMO-SAR-mmWave-Imaging-Toolbox
+### **MIMO-SAR-mmWave-Imaging-Toolbox**
 
 In this repository, we leverage and modify  a comprehensive open-source MIMO-SAR imaging toolbox, which is a MATLAB based software package.
 
@@ -24,7 +32,7 @@ Citation: Yanik, Muhammet Emin, et al. “Development and Demonstration of MIMO-
 
 Our code consists of three main modules: (1) data capture, (2) MIMO array calibration, and (3) image reconstruction. The framework of each module is detailed in our journal paper.
 
-### How to Use
+### **How to Use**
 
 #### Data Collection or Data Access
 
@@ -137,8 +145,6 @@ rawData_Rxchain = permute(rawData_Rxchain,[1,3,2,4,5,6]);
 
 After modify the directories, files and parameters,  running the workflow is what you need !
 
-
-
 #### Training and testing
 
 You are supposed to start training only if you arrange your data well. A brief structure is as follows.
@@ -181,3 +187,4 @@ Finally, after getting your model `[name].pth`, just modify the dict `CIFAR10_CL
 python predict.py
 ```
 
+![image-20241224191512530](README/image-20241224191512530.png)
